@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image:url("1727518093606.jpg") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    backdrop-filter: blur(6px);
+}
+.card{
+    border: 1px ;
+    padding: 30px;
+    background-color:transparent;
+    border: 5px ;
+    
+}
+
+input{
+    padding: 5px;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+h1{
+    text-align: center;
+}

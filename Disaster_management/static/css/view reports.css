@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image:url("flat-white-financial-report-vector-icon_1151483-77793.avif") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    backdrop-filter: blur(6px);
+}
+
+.card{
+    border: 1px ;
+    padding: 30px;
+    background-color:transparent;
+    border: 5px solid rgb(163, 159, 159);
+    
+    
+}
+
+
+input{
+    padding: 5px;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    
+}    
+
+table,tr,th,td{
+    /* border: 1px solid black; */
+    border-style:inset;
+    border-width: 2px;
+    border-color: rgb(246, 242, 242);
+    padding: 20px;
+    border-collapse: collapse;
+}
+button{
+    padding: 5px;
+    width: 50px; ;
+}

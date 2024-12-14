@@ -1,0 +1,13 @@
+table,tr,th,td{
+    /* border: 1px solid black; */
+    border-style:inset;
+    border-width: 2px;
+    border-color: rgb(246, 242, 242);
+    padding: 20px;
+    border-collapse: collapse;
+    margin: 250px;
+}
+button{
+    padding: 5px;
+    width: 50px; ;
+}

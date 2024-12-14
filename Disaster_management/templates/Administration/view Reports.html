@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="view reports.css">
+</head>
+<body>
+
+    
+
+    <table  >
+        <tr>
+            <th>id</th>
+            <th>Volunteer</th>
+            <th>date</th>
+            <th>subject</th>
+            <th>Report</th>
+
+        </tr>
+        {% for i in obj %}
+        <tr>
+            <td>
+                {{i.id}}
+            </td>
+            <td>
+                {{i.VOLUNTEER.Name}}
+            </td>
+            <td>
+               {{i.Date}}
+            </td>
+            <td>
+                {{i.Subject}}
+            </td>
+            <td>
+                {{i.Report}}
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="coordinator.css">
+
+</head>
+<body>
+    <a href="/add_coordinator">Add coordinators</a>
+    <table border="1">
+        <tr>
+            <th>name</th>
+            <th>age</th>
+            <th>place</th>
+            <th>phone or email</th>
+            <th>gender</th>
+            <th colspan="2">ACTIONS</th>
+            
+        </tr>
+        {% for i in obj %}
+        <tr>
+            <td>{{i.Name}}</td>
+            <td>{{i.Age}}</td>
+            <td>{{i.Place}}</td>
+            <td>{{i.Phonenumber}}</td>
+            <td>{{i.Gender}}</td>
+            <td><a href="edit_coordinator/{{i.id}}/">EDIT</a></td>
+            <td><a href="deletecoordinator/{{i.id}}/">DELETE</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
