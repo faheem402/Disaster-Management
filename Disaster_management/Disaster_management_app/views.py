@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views import View
 from .models import *
+from django.http import HttpResponse
 from .form import *
 
 # Create your views here.
@@ -14,10 +15,15 @@ class LoginPage(View):
        obj=LoginTable.objects.get(Username=username,Password=password)
        if(obj.Type=='admin'):
           return render(request, "Administration/adminhome.html")
-       
+       if(obj.Type=='Volunteer'):
+          return render(request, "Volunteers/Volunteers home.html")
           
     
 #//////////////////////////////ADMIN///////////////////////
+class adminhome(View):
+   def get(self,request):
+      return render(request, 'Administration/adminhome.html')
+
 
 class Add_coordinatorPage(View):
     def get(self,request):
@@ -34,22 +40,34 @@ class resource_management(View):
      obj=ResourceTable.objects.all()
      return render(request, "Administration/resource management.html",{'obj':obj})
     
+class add_resource(View):
+    def get(self,request):
+     return render(request, "Administration/add resource.html")
+    def post(self,request):
+       form=Resourceform(request.POST, request.FILES)
+       if form.is_valid():
+          form.save()
+          return redirect('resourcemanagement')
+
+    
 class deleteResource(View):
    def get(self,request,id):
       obj=ResourceTable.objects.get(id=id)
       obj.delete()
       return redirect('resource management') 
 
-   class edit_resource(View):
+class edit_resource(View):
     def get(self,request,id):
       obj=ResourceTable.objects.get(id=id)
-      return render(request,"Administration/Edit_coordinator.html",{'obj':obj})
+      print(obj)
+      return render(request,"Administration/edit resource.html",{'obj':obj})
     def post(self,request,id):
        obj=ResourceTable.objects.get(id=id)
-       form=Addcoordinatorform(request.POST,instance=obj)
+       print(obj)
+       form=Resourceform(request.POST,instance=obj)
        if form.is_valid():
           form.save()
-          return redirect('viewcoordinator')
+          return redirect('resource management')
     
     
 class view_complaint(View):
@@ -57,7 +75,16 @@ class view_complaint(View):
      obj=ComplaintTable.objects.all()
      return render(request, "Administration/view complaint.html",{'obj':obj})
     
-    
+class reply(View):
+   def get(self, request, id):
+      return render(request,"Administration/reply.html")    
+   def post(self,request,id):
+      reply=request.POST['reply']
+      obj=ComplaintTable.objects.get(id=id)
+      obj.Reply=reply
+      obj.save()
+      return HttpResponse('''<script>alert("reply send");window.location="/view_complaint"</script>''')
+   
 class view_reports(View):
     def get(self,request):
         obj=ReportsTable.objects.all()
@@ -88,6 +115,9 @@ class deletecoordinator(View):
     
 
 #/////////////////////////////VOLUNTEERS////////////////////////
+class Volunteers_home(View):
+   def get(self,request):
+      return render(request, "Volunteers/Volunteers home")
 
 class Add_victim_info(View):
     def get(self,request):

@@ -6,7 +6,7 @@ class Addcoordinatorform(ModelForm):
         model=CoordinaterTable
         fields=['Name','Age','Place','Phonenumber','Gender']
 
-class ResourceManagementform(ModelForm):
+class Resourceform(ModelForm):
     class Meta:
         model=ResourceTable
         fields=['Itemname','Image','Description']

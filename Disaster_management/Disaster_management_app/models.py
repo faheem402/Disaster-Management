@@ -6,6 +6,15 @@ class LoginTable(models.Model):
     Password=models.CharField(max_length=50, blank=True, null=True)
     Type=models.CharField(max_length=50, blank=True, null=True)
 
+class UserTable(models.Model):
+    LOGIN=models.ForeignKey(LoginTable, on_delete=models.CASCADE,null=True,blank=True)
+    Name=models.CharField(max_length=50, blank=True, null=True)
+    Age=models.IntegerField(blank=True, null=True)
+    Place=models.CharField(max_length=50, blank=True, null=True)
+    PhoneNo=models.BigIntegerField(blank=True, null=True)
+    Gender=models.CharField(max_length=30, blank=True, null=True)
+
+
 class CoordinaterTable(models.Model):
     Name=models.CharField(max_length=50, blank=True, null=True)
     Age=models.IntegerField(blank=True, null=True)
@@ -45,7 +54,6 @@ class RequestTable(models.Model):
     Status=models.CharField(max_length=150, blank=True, null=True)
 
 
-
 class VictimInfoTable(models.Model):
     VOLUNTEERS=models.ForeignKey(VolunteersTable,on_delete=models.CASCADE)
     Name=models.CharField(max_length=50, blank=True, null=True)
@@ -58,40 +66,6 @@ class AlertTable(models.Model):
     Message=models.CharField(max_length=50, blank=True, null=True)
     Date=models.DateField(blank=True, null=True)
 
-class UserTable(models.Model):
-    LOGIN=models.ForeignKey(LoginTable, on_delete=models.CASCADE,null=True,blank=True)
-    Name=models.CharField(max_length=50, blank=True, null=True)
-    Age=models.IntegerField(blank=True, null=True)
-    Place=models.CharField(max_length=50, blank=True, null=True)
-    PhoneNo=models.BigIntegerField(blank=True, null=True)
-    Gender=models.CharField(max_length=30, blank=True, null=True)
 
-class UserModule(models.Model):
-     Name=models.CharField(max_length=50, blank=True, null=True)
-     Age=models.IntegerField(blank=True, null=True)
-     Place=models.CharField(max_length=50, blank=True, null=True)
-     PhoneNo=models.BigIntegerField(blank=True, null=True)
-     Gender=models.CharField(max_length=30, blank=True, null=True)
-
-class ViewResource(models.Model):
-    ItemName=models.CharField(max_length=50, blank=True, null=True)
-    Image=models.FileField(blank=True, null=True)
-    Description=models.CharField(max_length=150, blank=True, null=True)
-
-class ViewAdminReport(models.Model):
-    Date=models.DateField(blank=True, null=True)
-    Subject=models.CharField(max_length=150, blank=True, null=True)
-
-class ViewVolunteers(models.Model): 
-    Name=models.CharField(max_length=50, blank=True, null=True)
-    DOB=models.DateField(blank=True, null=True)
-    Place=models.CharField(max_length=50, blank=True, null=True)
-    PhoneNo=models.BigIntegerField(blank=True, null=True)
-    Gender=models.CharField(max_length=50, blank=True, null=True)
-
-class SendComplaintAndViewReply(models.Model):
-    Date=models.DateField(blank=True, null=True)
-    Subject=models.CharField(max_length=150, blank=True, null=True)
-    Complaint=models.CharField(max_length=150, blank=True, null=True)
     
                

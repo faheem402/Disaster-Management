@@ -22,8 +22,11 @@
             <td>{{ i.Itemname}}</td>
             <td><img src="{{ i.Image.url }}"height="150" width="250"></td>
             <td>{{ i.Description}}</td>
-            <td><a href="">EDIT</a></td>
+            <td><a href="edit_resource/{{i.id}}/">EDIT</a></td>
             <td><a href="deleteResource/{{i.id}}/">DELETE</a></td>
+        </tr>
+        <tr>
+            <td><a href="/add_resource">Add resource</a></td>
         </tr>
         {% endfor %}
     </table>
