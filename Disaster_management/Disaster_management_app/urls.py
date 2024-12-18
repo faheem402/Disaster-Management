@@ -45,8 +45,6 @@ urlpatterns = [
     path('View_User', View_User.as_view(), name="User"),
     path('view_user_reports', view_user_reports.as_view(), name="view user reports"),
 
-    
-
 ]
 
 

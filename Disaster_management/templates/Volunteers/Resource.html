@@ -7,15 +7,27 @@
     <link rel="stylesheet" href="resource.css">
 </head>
 <body>
-    <div class="main">
-        <h1>View Resource</h1>
-   <input type="text" placeholder="Item Name"><br>
-   <input type="text" name="" id="" placeholder="Image">
+<table border="10">
+    <tr>
 
-   <br>
-   <input type="text" name="" id="" placeholder="Description">
-   <br>
-   <button><a href="" >Add</a></button>
-</div>
+        <th>Item Name</th>
+        <th>Image</th>
+        <th>Description</th>
+    </tr>
+    {% for i in obj %}
+    <tr>
+        <td>
+            {{i.Itemname}}
+        </td>
+        <td>
+            <input type="file" name="Image">
+            <img src="{{i.Image.url}}" height="40px" width="20px">
+        </td>
+        <td>
+           {{i.Description}}
+        </td>
+        {% endfor %}
+        </tr>
+    </table>
 </body>
 </html>

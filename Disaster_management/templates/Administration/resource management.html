@@ -20,15 +20,16 @@
         {% for i in obj %}
         <tr>
             <td>{{ i.Itemname}}</td>
-            <td><img src="{{ i.Image.url }}"height="150" width="250"></td>
+            <td><img src="{{ i.Image.url }}" alt="no Image" height="150" width="250"></td>
             <td>{{ i.Description}}</td>
             <td><a href="edit_resource/{{i.id}}/">EDIT</a></td>
             <td><a href="deleteResource/{{i.id}}/">DELETE</a></td>
         </tr>
+  
+        {% endfor %}
         <tr>
             <td><a href="/add_resource">Add resource</a></td>
         </tr>
-        {% endfor %}
     </table>
 </body>
 </html>

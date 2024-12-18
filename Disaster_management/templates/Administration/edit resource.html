@@ -13,16 +13,19 @@
             <table border="1">
                 <tr>
                     <th>Itemname</th>
-                   <td><input type="text" name="Itemname"></td> 
+                   <td><input type="text" name="Itemname" value="{{obj.Itemname}}"></td> 
                 </tr>
                 <tr>    
                     <th>Image</th>
-                   <td><input type="file" name="Image"></td> 
+                   <td>
+                    <input type="file" name="Image">
+                    <img src="{{obj.Image.url}}" alt=""></td> 
                 </tr>
                 <tr>
                     <th>Description</th>
-                    <td><input type="text" name="Description"></td> 
+                    <td><input type="text" name="edit" value="{{obj.Description}}"></td> 
                 </tr>
+                <button type="submit">Submit</button>
                     
             </table>   
 </body>

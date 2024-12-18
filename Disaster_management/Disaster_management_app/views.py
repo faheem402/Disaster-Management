@@ -15,7 +15,7 @@ class LoginPage(View):
        obj=LoginTable.objects.get(Username=username,Password=password)
        if(obj.Type=='admin'):
           return render(request, "Administration/adminhome.html")
-       if(obj.Type=='Volunteer'):
+       elif(obj.Type=='Volunteer'):
           return render(request, "Volunteers/Volunteers home.html")
           
     
@@ -64,10 +64,10 @@ class edit_resource(View):
     def post(self,request,id):
        obj=ResourceTable.objects.get(id=id)
        print(obj)
-       form=Resourceform(request.POST,instance=obj)
+       form=Resourceform(request.POST,request.FILES,instance=obj)
        if form.is_valid():
           form.save()
-          return redirect('resource management')
+          return redirect('resourcemanagement')
     
     
 class view_complaint(View):
@@ -137,7 +137,8 @@ class Send_Resource_request(View):
     
 class Resource(View):
     def get(self,request):
-     return render(request, "Volunteers/Resource.html")
+     obj=ResourceTable.objects.all()
+     return render(request, "Volunteers/Resource.html",{'obj':obj})
     
 class View_User(View):
     def get(self,request):
