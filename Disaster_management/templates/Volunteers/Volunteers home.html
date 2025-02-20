@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/adminhome.css' %}">
 </head>
 <body>
     <a href="/Resource">Resource</a>
@@ -12,6 +14,6 @@
     <a href="/Send_Resource_request">Send Resource reques</a>
     <a href="/view_user_reports">view user reports</a>
     <a href="/View_User">View User</a>
-    <a href="/login">Logout</a>
+    <a href="/">Logout</a>
 </body>
 </html>

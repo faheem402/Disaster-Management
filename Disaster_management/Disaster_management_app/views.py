@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from .models import *
+
+from Disaster_management_app.serializer import *
 from django.http import HttpResponse
 from .form import *
 
@@ -149,4 +150,80 @@ class view_user_reports(View):
      return render(request, "Volunteers/view user reports.html")
     
 
+
+# //////////////////////////////////////// API ////////////////////////////////////////////////////////
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+class UserReg(APIView):
+   def post(self, request):
+      print("###############",request.data)
+      user_serial = UserTableSerializer(data=request.data)
+      login_serial = LoginTableSerializer(data=request.data)
+      data_valid = user_serial.is_valid()
+      login_valid = login_serial.is_valid()
+      print("&&&&&&&&&&&&&&&&&", data_valid, login_valid)
+
+      if data_valid and login_valid:
+         print("&&&&&&&&&&&&&&&&&")
+         password = request.data['password']
+         login_profile = login_serial.save(Type='USER', Password=password)
+         user_serial.save(LOGIN=login_profile)
+         return Response (user_serial.data, status=status.HTTP_201_CREATED)
+   
+class LoginPageApi(APIView):
+    def post(self, request):
+        response_dict = {}
+
+        # Get data from the request
+        username = request.data.get("username")
+        password = request.data.get("password")
+
+        # Validate input
+        if not username or not password:
+            response_dict["message"] = "failed"
+            return Response(response_dict, status=status.HTTP_400_BAD_REQUEST)
+
+        # Fetch the user from LoginTable
+        t_user = LoginTable.objects.filter(Username=username).first()
+
+        if not t_user:
+            response_dict["message"] = "failed"
+            return Response(response_dict, status=status.HTTP_401_UNAUTHORIZED)
+
+        # Successful login response
+        response_dict["message"] = "success"
+        response_dict["login_id"] = t_user.id
+
+        return Response(response_dict, status=status.HTTP_200_OK)
+
+
+
+class ViewVolunteersApi(APIView):
+     def get(self, request):
+         volunteers = VolunteersTable.objects.all()
+         volunteers_serializer = VolunteersTableSerialiser(volunteers, many = True)       
+         return Response(volunteers_serializer.data)
+
+
+class ViewResourcesApi(APIView):
+   def get(self, request):
+      Resource = ResourceTable.objects.all()
+      serializer = resourceTableSerializer(Resource, many = True)
+      return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class ViewAdminreportsApi(APIView):
+   def get(self, request):
+      Adminreports = ReportsTable.objects.all()
+      Adminreports_serializer = Adminreports_serializer(Adminreports, many = True)
+      return Response(Adminreports_serializer.data)
+
+
+class ViewcomplaintApi(APIView):
+   def get(self, request):
+      complaint = ComplaintTable.objects.all()
+      complaint_serializer = complaint_serializer(Resource, many = True)
+      return Response(complaint_serializer.data)
 

@@ -18,7 +18,7 @@ class UserTable(models.Model):
 class CoordinaterTable(models.Model):
     Name=models.CharField(max_length=50, blank=True, null=True)
     Age=models.IntegerField(blank=True, null=True)
-    Place=models.CharField(max_length=50, blank=True, null=True)
+    Place=models.CharField(max_length=100, blank=True, null=True)
     Phonenumber=models.BigIntegerField(blank=True, null=True)
     Gender=models.CharField(max_length=30, blank=True, null=True)
 

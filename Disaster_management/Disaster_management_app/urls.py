@@ -45,6 +45,14 @@ urlpatterns = [
     path('View_User', View_User.as_view(), name="User"),
     path('view_user_reports', view_user_reports.as_view(), name="view user reports"),
 
+# api
+
+    path('LoginPageApi', LoginPageApi.as_view(), name="LoginPageApi"),
+    path('ViewVolunteers', ViewVolunteersApi.as_view(), name="ViewVolunteers"),
+    path('ViewResources', ViewResourcesApi.as_view(), name="ViewResources"),
+    path('ViewAdminreports', ViewAdminreportsApi.as_view(), name="ViewAdminreports"),
+    path('Viewcomplaint', ViewcomplaintApi.as_view(), name="Viewcomplaint"),
+    path('UserReg', UserReg.as_view(), name="UserReg"),
 ]
 
 

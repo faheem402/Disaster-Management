@@ -8,6 +8,39 @@
 
 </head>
 <body>
+    <style>
+         .top{
+            background-color: #4CAF50;  /* Green background */
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: center;
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 80px;
+    right: 650px;
+
+}
+
+        table {
+    width: 50%; /* Adjust the width as needed (e.g., 90% of the container) */
+    height: auto; /* Set the height automatically based on content, or define a fixed height */
+    margin: 6px auto; /* Center the table horizontally */
+    margin-bottom: 300px;
+    position: relative;
+    margin-left: 400px;
+    top: 120px;
+}
+
+/* Optional: Adjust table cells (th, td) padding and font size for better visibility */
+th, td {
+    padding: 6px; /* Increase padding to make the cells larger */
+    font-size: 0.97rem; /* Increase the font size for better readability */
+}
+        
+    </style>
     {% csrf_token %}
     <table border="1">
         <tr>
@@ -27,9 +60,10 @@
         </tr>
   
         {% endfor %}
-        <tr>
-            <td><a href="/add_resource">Add resource</a></td>
-        </tr>
+       
+            <div class="bt">
+            <a href="/add_resource" class="top">Add resource</a></div>
+        
     </table>
 </body>
 </html>

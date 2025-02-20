@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add coordinator</title>
-    <link rel="stylesheet" href="coordinator.css">
+    <link rel="stylesheet" href="{% static 'css/coordinator.css'%}">
 </head>
 <body>
     <form action="" method="post">
@@ -17,15 +18,15 @@
         <input type="text" name="Age" value="{{obj.Age}}">
         <br>
         <label for="">Place</label>
-        <input type="text" placeholder="Place" name="Place" value="{{obj.place}}">
+        <input type="text" placeholder="Place" name="Place" value="{{obj.Place}}">
         <br>
         <label for="">Phone number/E-mail</label>
         <input type="text" placeholder="Phone number/E-mail" name="Phonenumber" value="{{obj.Phonenumber}}">  
         <br>
         <label for="">gender</label>
-        <select name="" id="" name="Gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>     
+        <select id="" name="Gender">
+            <option value="Male" {% if obj.Gender == 'Male'%} selected {% endif %} >Male</option>
+            <option value="Female" {% if obj.Gender == 'Female' %} selected {% endif %}>Female</option>     
         </select>
         <br>
         <input type="submit" name="edit">
